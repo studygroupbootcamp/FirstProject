@@ -9,6 +9,6 @@ module.exports = (req, res) => {
     sql.query(
         //This query is updating passwords based on a name given and the new password they want. Its taken from update which is taken from
         //the actual ajax request.
-        "UPDATE people SET password = " + "'" + update.password + "'" + " WHERE name = " + "'" + update.name + "'", 
+        "UPDATE accounts SET password = " + "'" + update.password + "'" + " WHERE name = " + "'" + update.name + "'", 
     )
 }
