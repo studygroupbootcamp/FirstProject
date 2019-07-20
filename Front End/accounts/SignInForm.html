@@ -1,0 +1,47 @@
+<form method="GET" role="form" class="w-25 align-self-center mt-4 mb-4 shadow p-2 ml-5 mr-5">
+
+        <p>Sign in here.</p>
+
+    <div class="form-group">
+        <label for="emailS">Email</label>
+        <input type="email" class="form-control" id="emailS" placeholder="Email">
+    </div>
+    <div class="form-group">
+        <label for="passwordS">Password</label>
+        <input type="password" class="form-control" id="passwordS" placeholder="Pass">
+    </div>
+    <a id="signIn"  class="btn btn-primary w-100">Sign In</a>
+</form>
+
+<script> 
+    $('#signIn').on("click", function(event) {
+        event.preventDefault()
+        var signInInfo = {
+            email: $("#emailS").val(),
+            password: $('#passwordS').val()
+        }
+        $.ajax({
+            url: "http://localhost:3001/commands/signIn",
+            type: "POST",
+            data: signInInfo,
+            datatype:'json',
+            success: console.log('nice'),
+          })
+          .then(function(response){
+              console.log(signInInfo)
+              console.log(response.password)
+              if (response == '' || response[0].password !== signInInfo.password) {
+                  alert('Incorrect Email or Password')
+              } else{
+              console.log(response)
+                console.log(response[0].email)
+                console.log(response[0].name)
+                console.log(response[0].password)
+                localStorage.setItem("name", response[0].name);
+                localStorage.setItem("email", response[0].email);
+                localStorage.setItem("password", response[0].password);
+                window.location = 'accounts/yourAccount.html'
+              }
+          })
+    })
+</script>
