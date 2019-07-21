@@ -12,6 +12,7 @@ const DL = require('./delete')
 const RT = require('./retrieve')
 const UP = require('./update')
 const SI = require('./signIn.js')
+const RA = require('./specificRetrieve')
 
 //These are our different http requests. Notice how it no longer says router.use. It not has the methods that we would normally put in front of
 //our commands. You now put them here. Then you set the end point that you would use on the front end and tell it what file to use when it
@@ -24,6 +25,8 @@ routes.post('/create', CR)
 
 //this is our get command
 routes.get('/retrieve', RT)
+
+routes.post('/retrieveAccount', RA)
 
 routes.post('/signIn', SI)
 

@@ -5,6 +5,20 @@ $(document).ready(function(){
     var password = localStorage.getItem('password')
     var admin = localStorage.getItem('adminPass')
 
+    var info = {
+        email: email
+    }
+    $.ajax({
+        url: "http://localhost:3001/commands/retrieveAccount",
+        type: "POST",
+        datatype:'json',
+        success: console.log('nice'),
+        data: info
+      })
+      //So this took a WHILE to get working. It kept sending me the wrong information. The response is actually being sent from an sql call in the
+      //back end. It comes in an array that is then looped through and each key value pair is stored in html tags and then displayed on the page.
+                    //this is specifically the response
+      .then(function(response){
     if(admin == '32a64b') {
         var adpan = $('#adminPanel')
         var adbut = $('<button>')
@@ -13,14 +27,16 @@ $(document).ready(function(){
         adbut.text('Admin Panel')
         adpan.append(adbut)
     }
-    $('#name').text(name)
-    $('#email').text(email)
-    $('#password').text(password)
+    console.log(response[0].date_created)
+    $('#name').text(response[0].name)
+    $('#email').text(response[0].email)
+    $('#password').text(response[0].password)
+    $('#DateJoined').text(response[0].date_created.substring(0, 10))
     $('#gotoadmin').click(function(){
         window.location = './adminPanel.html'
     })
 })
-
+})
 $("#signOut").click(function(){
     localStorage.setItem('name', '')
     localStorage.setItem('email', '')

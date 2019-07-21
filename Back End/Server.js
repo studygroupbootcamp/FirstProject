@@ -23,3 +23,15 @@ app.use('/', routes)
 app.listen(PORT, function(){
     console.log('server listening on port ' + PORT)
 });
+
+var date = new Date()
+console.log(date)
+var year = (date.getFullYear())
+var day = (date.getDate())
+var month = (date.getMonth() + 1)
+var m0 = ""
+var d0 = ""
+if (day<10) {d0=0} else{d0=""}
+if (month < 10) {m0 = 0} else {m0=''}
+var fulldate = year+'-'+m0+''+month+'-'+d0+""+day
+console.log(fulldate)
