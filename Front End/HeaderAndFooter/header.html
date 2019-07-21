@@ -2,16 +2,32 @@
     <div class='d-flex w-50 flex-row justify-content-around'>
         <h1 class="text-white">Social</h1>
         <div class='d-flex h-100 align-self-center w-50'>
-            <input class="h-25 align-self-center form-control" placeholder="search">
-            <submit class="btn btn-dark h-25 align-self-center mr-0">search</submit>
+            <input id="nameSearch" class="h-25 align-self-center form-control" placeholder="search">
+            <submit id="search" class="btn btn-dark h-25 align-self-center mr-0">search</submit>
         </div>
     </div>
     <div class="w-50 d-flex">
         <div class="w-50"></div>
         <div class="w-50 d-flex justify-content-around">
-            <button class="btn btn-dark">Account</button>
+            <button id="gohome" class="btn btn-dark">Account</button>
             <button class="btn btn-dark">Home</button>
             <button class="btn btn-dark">Messages</button>
         </div>
     </div>
 </nav>
+
+<script>
+
+    $('#search').on('click', function(){
+        var searched = $('#nameSearch').val()
+        localStorage.setItem('search', searched)
+        window.location = './otherUser.html'
+    })
+
+    $('#gohome').on('click', function(){
+      window.location = './yourAccount.html'
+  })
+
+
+
+</script>

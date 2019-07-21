@@ -60,6 +60,7 @@ function createForm(){
                 localStorage.setItem("email", response[0].email);
                 localStorage.setItem("password", response[0].password);
                 localStorage.setItem("adminPass", response[0].adminPassword);
+                localStorage.setItem('myid', response[0].id)
                 window.location = 'accounts/yourAccount.html'
               }
           })

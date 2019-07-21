@@ -13,6 +13,7 @@ const RT = require('./retrieve')
 const UP = require('./update')
 const SI = require('./signIn.js')
 const RA = require('./specificRetrieve')
+const NR = require('./nameRetrieve')
 
 //These are our different http requests. Notice how it no longer says router.use. It not has the methods that we would normally put in front of
 //our commands. You now put them here. Then you set the end point that you would use on the front end and tell it what file to use when it
@@ -30,6 +31,7 @@ routes.post('/retrieveAccount', RA)
 
 routes.post('/signIn', SI)
 
+routes.post('/nameSearch', NR)
 //this is our update command
 routes.put('/update', UP)
 
