@@ -1,0 +1,56 @@
+<form method="POST" role="form" class="w-25 align-self-center mt-4 mb-4 shadow p-2 ml-5 mr-5">
+        <div class="form-group">
+            <p>Create your account here.</p>
+            <label for="nameC">Input Your Name</label>
+            <input type="text" class="form-control" id="nameC" aria-describedby="nameHelp"
+                placeholder="Enter Your Name">
+        </div>
+        <div class="form-group">
+            <label for="emailC">Input Your Email</label>
+            <input type="email" class="form-control" id="emailC" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label for="passwordC">Input Your Password</label>
+            <input type="password" class="form-control" id="passwordC" placeholder="Password">
+        </div>
+        <a id="Create" href="./accounts/yourAccount.html" class="btn btn-primary w-100">Create Account</a>
+    </form>
+
+    <script>
+    //This is our create ajax call. It sends data thats taken from our form when the button with the id Create is pressed.
+
+            $("#Create").on("click", function (event) {
+                //this stops the buttons from taking you to a new page
+                //this is our new person. It is creating an object from the values typed into the input fields in form. It uses the inputs id to 
+                // grab the value.
+                var newPerson = {
+                    name: $("#nameC").val(),
+                    email: $("#emailC").val(),
+                    password: $("#passwordC").val()
+                };
+                //here we check to make sure the user has actually put in all required information. It checks to make sure none of the fields are empty
+                //and if none of them are it then proceeds with the ajax call.
+                if (!newPerson.name || !newPerson.email || !newPerson.password) {
+                    //For now this just sends an alert. I would like to change this to a pop up box above the form eventaully.
+                    alert('Fill out all fields please!')
+                } else {
+                localStorage.setItem('name', newPerson.name)
+                localStorage.setItem('password', newPerson.password)
+                localStorage.setItem('email', newPerson.email)
+                $.ajax({
+                    type: "POST",
+                    //This url is pointing to an express endpoint we have set up in the back. Its specifically pulling the create command.
+                    url: "http://localhost:3001/commands/create",
+                    //this is telling ajax to specifically send the object newPerson as the data being sent.
+                    data: newPerson,
+                    //When our call is succesfull it will log it so that you can check
+                    success: console.log('success'),
+                    //this makes sure that the type of data stays as a json. Since we work in mainly javascript its generally a good idea to always have this.
+                    dataType: 'application/json'
+                  });
+                }
+                //This is so that the window reloads after the user is done. It will refresh the table at the bottom of the page and empty all the forms
+                //This is to stop a user from clicking a button numerous times and sending a large amount of unnesecary (i cant spell) requests
+                location.reload()
+            });
+            </script>

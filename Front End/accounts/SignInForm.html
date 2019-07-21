@@ -1,0 +1,67 @@
+<div id="form1" class="d-flex flex-grow-1 justify-content-center">
+<form method="GET" role="form" class="w-25 align-self-center mt-4 mb-4 shadow p-2 ml-5 mr-5">
+
+        <p>Sign in here.</p>
+
+    <div class="form-group">
+        <label for="emailS">Email</label>
+        <input type="email" class="form-control" id="emailS" placeholder="Email">
+    </div>
+    <div class="form-group">
+        <label for="passwordS">Password</label>
+        <input type="password" class="form-control" id="passwordS" placeholder="Password">
+    </div>
+    <div class='d-flex flex-column text-center'>
+    <a id="create" class="mb-3">Dont have an account?</a>
+    <a id="forgot" class="mb-3">Forgot your password?</a>
+    <a id="signIn"  class="text-light btn btn-primary w-100">Sign In</a>
+</div>
+</form>
+</div>
+<script> 
+
+$('#create').on('click', function(event) {
+    event.preventDefault()
+    emptyForm()
+})
+
+function emptyForm() {
+    $('#form1').empty()
+    createForm()
+}
+
+function createForm(){
+    $('#form1').load('./accounts/createAccount.html')
+}
+    $('#signIn').on("click", function(event) {
+        event.preventDefault()
+        var signInInfo = {
+            email: $("#emailS").val(),
+            password: $('#passwordS').val()
+        }
+        $.ajax({
+            url: "http://localhost:3001/commands/signIn",
+            type: "POST",
+            data: signInInfo,
+            datatype:'json',
+            success: console.log('nice'),
+          })
+          .then(function(response){
+              console.log(signInInfo)
+              console.log(response.password)
+              if (response == '' || response[0].password !== signInInfo.password) {
+                  alert('Incorrect Email or Password')
+              } else{
+              console.log(response)
+                console.log(response[0].email)
+                console.log(response[0].name)
+                console.log(response[0].password)
+                localStorage.setItem("name", response[0].name);
+                localStorage.setItem("email", response[0].email);
+                localStorage.setItem("password", response[0].password);
+                localStorage.setItem("adminPass", response[0].adminPassword);
+                window.location = 'accounts/yourAccount.html'
+              }
+          })
+    })
+</script>
