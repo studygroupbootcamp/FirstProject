@@ -1,3 +1,4 @@
+<div id="form1" class="d-flex flex-grow-1 justify-content-center">
 <form method="GET" role="form" class="w-25 align-self-center mt-4 mb-4 shadow p-2 ml-5 mr-5">
 
         <p>Sign in here.</p>
@@ -8,12 +9,30 @@
     </div>
     <div class="form-group">
         <label for="passwordS">Password</label>
-        <input type="password" class="form-control" id="passwordS" placeholder="Pass">
+        <input type="password" class="form-control" id="passwordS" placeholder="Password">
     </div>
-    <a id="signIn"  class="btn btn-primary w-100">Sign In</a>
+    <div class='d-flex flex-column text-center'>
+    <a id="create" class="mb-3">Dont have an account?</a>
+    <a id="forgot" class="mb-3">Forgot your password?</a>
+    <a id="signIn"  class="text-light btn btn-primary w-100">Sign In</a>
+</div>
 </form>
-
+</div>
 <script> 
+
+$('#create').on('click', function(event) {
+    event.preventDefault()
+    emptyForm()
+})
+
+function emptyForm() {
+    $('#form1').empty()
+    createForm()
+}
+
+function createForm(){
+    $('#form1').load('./accounts/createAccount.html')
+}
     $('#signIn').on("click", function(event) {
         event.preventDefault()
         var signInInfo = {
@@ -40,6 +59,7 @@
                 localStorage.setItem("name", response[0].name);
                 localStorage.setItem("email", response[0].email);
                 localStorage.setItem("password", response[0].password);
+                localStorage.setItem("adminPass", response[0].adminPassword);
                 window.location = 'accounts/yourAccount.html'
               }
           })
