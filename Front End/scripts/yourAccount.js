@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+    $('#friends').on('click', function(){
+        window.location = './friends.html'
+    })
+
     var name = localStorage.getItem('name')
     var email = localStorage.getItem('email')
     var password = localStorage.getItem('password')

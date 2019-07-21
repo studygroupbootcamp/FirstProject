@@ -26,6 +26,10 @@ $(document).ready(function (event) {
         var email = $('<td>')
         email.text(response[i].email)
         $(contain).append(email)
+
+        var date = $('<td>')
+        date.text(response[i].date_created.substring(0, 10))
+        $(contain).append(date)
             
         var row5 = $('<td>')
         $(contain).append(row5)
