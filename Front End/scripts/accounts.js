@@ -9,7 +9,7 @@ $(document).ready(function (event) {
       //back end. It comes in an array that is then looped through and each key value pair is stored in html tags and then displayed on the page.
                     //this is specifically the response
       .then(function(response){
-          for (i=0; i<response.length; i++) {
+          for (i=0; i < response.length; i++) {
         var trow = $('<td>')
         var trow2 = $('<td>')
         var contain = $('<tr>')
@@ -26,17 +26,20 @@ $(document).ready(function (event) {
         var email = $('<td>')
         email.text(response[i].email)
         $(contain).append(email)
-    
+            
+        var row5 = $('<td>')
+        $(contain).append(row5)
+
         var password = $('<input>')
         password.attr('type', 'password')
         password.attr('placeholder', response[i].password)
         password.attr('class', 'form-control')
         password.attr('id', "password"+i)
 
-        $(contain).append(password)
+        $(row5).append(password)
 
         var deletebut = $('<button>')
-        deletebut.text('Delete?')
+        deletebut.text('Delete')
         deletebut.attr('val', response[i].name)
         deletebut.attr('class', 'delete'+i+' btn btn-primary')
         $(trow).append(deletebut)
@@ -44,9 +47,9 @@ $(document).ready(function (event) {
         
 
         var updatebut = $('<button>')
-        updatebut.text('update?')
+        updatebut.text('Update')
         updatebut.attr('val', response[i].name)
-        updatebut.attr('class', 'update'+i+' btn btn-primary button')
+        updatebut.attr('class', 'update'+i+' btn btn-primary button align-self-center')
         updatebut.attr('id', i)
         $(trow2).append(updatebut)
         $(contain).append(trow2)
@@ -89,7 +92,6 @@ function delegate(i){$('.update' + i).on("click", function (e) {
 });}
 
 //This is our delete ajax call. It sends data to be deleted thats taken from our form when the button with the id delete is pressed.
-var deletebutton = $('.delete'+i)
 function delegated(i){$('.delete'+i).on("click", function (e) {
     var value = $(e.target).attr('val')
     console.log(value)
