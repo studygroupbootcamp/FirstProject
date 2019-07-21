@@ -20,4 +20,7 @@ than 2 emails or names please let me know if it works for you or if you figure i
 );
 
 INSERT INTO accounts (name, email, password, date_created)
-VALUES ('Devon', 'Dvowen@cox.net', 'password', '2019-07-20'), ('Taylor', 'Taylor@Hotdogs.net', 'Hotdogs', '2019-07-20'),
+VALUES ('Devon', 'Dvowen@cox.net', 'password', '2019-07-20'), ('Taylor', 'Taylor@Hotdogs.net', 'Hotdogs', '2019-07-20');
+
+INSERT INTO accounts (name, email, password, adminPassword, date_created)
+VALUES ('root', 'root@root', 'root', '32a64b', '2019-07-20')
