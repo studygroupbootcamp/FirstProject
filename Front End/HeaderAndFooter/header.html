@@ -1,4 +1,4 @@
-<nav style="background-color: #BADA55"class="navbar navbar-primary justify-content-start">
+<nav style="background-color: #BADA55" class="navbar navbar-primary justify-content-start">
     <div class='d-flex w-50 flex-row justify-content-around'>
         <h1 class="text-white">Social</h1>
         <div class='d-flex h-100 align-self-center w-50'>
@@ -9,25 +9,37 @@
     <div class="w-50 d-flex">
         <div class="w-50"></div>
         <div class="w-50 d-flex justify-content-around">
-            <button id="gohome" class="btn btn-dark">Account</button>
-            <button class="btn btn-dark">Home</button>
+            <button id="goaccount" class="btn btn-dark">Account</button>
+            <button id="gohome"class="btn btn-dark">Home</button>
             <button class="btn btn-dark">Messages</button>
         </div>
     </div>
 </nav>
 
 <script>
+    $(document).ready(function () {
+        function setsearch(){
+            var searched = $('#nameSearch').val()
+            localStorage.setItem('search', searched)
+        }
+        function changewindow(){
+            if (window.location.href.includes('/otherUser')) {
+                location.reload()
+            } else { window.location = './otherUser.html' }
+        }
 
-    $('#search').on('click', function(){
-        var searched = $('#nameSearch').val()
-        localStorage.setItem('search', searched)
-        window.location = './otherUser.html'
+        $('#search').on('click', function () {
+            setsearch(changewindow())
+        })
+
+        $('#goaccount').on('click', function () {
+            window.location = './yourAccount.html'
+        })
+
+        $('#gohome').on('click', function () {
+            window.location = './Home.html'
+        })
     })
-
-    $('#gohome').on('click', function(){
-      window.location = './yourAccount.html'
-  })
-
 
 
 </script>
