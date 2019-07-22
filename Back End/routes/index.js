@@ -3,6 +3,8 @@ const express = require('express')
 const router = express.Router();
 const DBC = require('./People')
 const REL = require('./Relationships')
+const MSG = require('./messages')
+const POS = require('./Posts')
 
 //here is your first ROUTES folder. The main part of express and something we did not really go into in depth in class is routing to different
 //folders so that you can use middleware. An example of middleware is the fact that we only have to tell express to use url encoded true once.
@@ -13,6 +15,8 @@ const REL = require('./Relationships')
 ///./people folder. See a pattern yet?
 router.use('/commands', DBC)
 router.use('/relationships', REL)
+router.use('/message', MSG)
+router.use('/posts', POS)
 
 //module.exports basically lets other files know that when you "use" this file your specifically using the router commands. Youll start to
 //understand it as we start to make more routes.
