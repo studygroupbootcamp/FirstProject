@@ -12,7 +12,7 @@ app.use(express.json());
 //own website we dont have to worry.
 app.use(cors());
 
-var PORT = 3001
+var PORT = process.env.PORT || 3001;
 
 
 
