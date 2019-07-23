@@ -4,7 +4,7 @@ $(document).ready(function () {
         name: localStorage.getItem('search')
     }
     $.ajax({
-        url: "http://localhost:3001/commands/nameSearch",
+        url: "/api/commands/nameSearch",
         type: "POST",
         datatype: 'json',
         success: console.log('Got ' + localStorage.getItem('search') + "'s Info"),

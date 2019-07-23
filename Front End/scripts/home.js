@@ -17,7 +17,7 @@ $(document).ready(function(){
         newpost.body = $('#postBody').val()
 
         $.ajax({
-            url: "http://localhost:3001/posts/makePost",
+            url: "/api/posts/makePost",
             type: "POST",
             datatype: "json",
             success: console.log("Post made! Thank you "+localStorage.getItem('name')),
@@ -29,7 +29,7 @@ $(document).ready(function(){
 
 
      $.ajax({
-            url: "http://localhost:3001/posts/getFriendsPost",
+            url: "/api/posts/getFriendsPost",
             type:"POST",
             datatype:'json',
             success: console.log('got all friends posts with ID:'+ console.log()),

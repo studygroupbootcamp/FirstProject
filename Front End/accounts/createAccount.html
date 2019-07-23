@@ -41,7 +41,7 @@
                 $.ajax({
                     type: "POST",
                     //This url is pointing to an express endpoint we have set up in the back. Its specifically pulling the create command.
-                    url: "http://localhost:3001/commands/create",
+                    url: "/api/commands/create",
                     //this is telling ajax to specifically send the object newPerson as the data being sent.
                     data: newPerson,
                     //When our call is succesfull it will log it so that you can check

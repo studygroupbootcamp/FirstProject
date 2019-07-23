@@ -9,7 +9,7 @@ var search = {
 
 console.log(localStorage)
 $.ajax({
-  url: "http://localhost:3001/commands/nameSearch",
+  url: "/api/commands/nameSearch",
   type: "POST",
   datatype:'json',
   success: console.log('Got '+localStorage.getItem('search')+"'s Info"),
@@ -35,7 +35,7 @@ var postinfo = {
 }
 
 $.ajax({
-  url:"http://localhost:3001/relationships/checkFriend",
+  url:"/api/relationships/checkFriend",
   type:"POST",
   datatype:"json",
   success: console.log('Checking if your friends'),
@@ -47,7 +47,7 @@ if (response.length > 0) {
 })
 
 $.ajax({
-  url:"http://localhost:3001/posts/getPostFromUser",
+  url:"/api/posts/getPostFromUser",
   type: "POST",
   datatype:"json",
   success: console.log('Got posts!'),
@@ -86,7 +86,7 @@ $.ajax({
 
   $('#addF').on('click', function(){
     $.ajax({
-      url: 'http://localhost:3001/relationships/addFriend',
+      url: '/api/relationships/addFriend',
       type: "POST",
       datatype:'json',
       success: console.log('Added'),

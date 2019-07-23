@@ -7,7 +7,7 @@ $(document).ready(function(){
     
 
     $.ajax({
-        url: "http://localhost:3001/relationships/showFriends",
+        url: "/api/relationships/showFriends",
         type: "POST",
         datatype:'json',
         success: console.log('nice'),
@@ -37,7 +37,7 @@ $(document).ready(function(){
     }
     var messages = []
     $.ajax({
-        url: "http://localhost:3001/message/getFromMessage",
+        url: "/api/message/getFromMessage",
         type: "POST",
         datatype:'json',
         success: console.log('Got Messages'),
@@ -47,7 +47,7 @@ $(document).ready(function(){
           messages.push(response[i])
         }})
         $.ajax({
-            url: "http://localhost:3001/message/getToMessage",
+            url: "/api/message/getToMessage",
             type: "POST",
             datatype:'json',
             success: console.log('Got Messages'),
@@ -89,7 +89,7 @@ $(document).ready(function(){
         if (newMessage.message == ""){alert('please input a message')}
         else {
         $.ajax({
-          url: "http://localhost:3001/message/sendMessage",
+          url: "/api/message/sendMessage",
           type: "POST",
           datatype: "json",
           success: console.log('Message Sent: ' + newMessage),
@@ -115,7 +115,7 @@ function delegate(i) {
         }
         var messages = []
         $.ajax({
-            url: "http://localhost:3001/message/getFromMessage",
+            url: "/api/message/getFromMessage",
             type: "POST",
             datatype:'json',
             success: console.log('Got Messages'),
@@ -125,7 +125,7 @@ function delegate(i) {
               messages.push(response[i])
             }})
             $.ajax({
-                url: "http://localhost:3001/message/getToMessage",
+                url: "/api/message/getToMessage",
                 type: "POST",
                 datatype:'json',
                 success: console.log('Got Messages'),

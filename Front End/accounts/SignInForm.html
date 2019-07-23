@@ -40,7 +40,7 @@ function createForm(){
             password: $('#passwordS').val()
         }
         $.ajax({
-            url: "http://localhost:3001/commands/signIn",
+            url: "/api/commands/signIn",
             type: "POST",
             data: signInInfo,
             datatype:'json',

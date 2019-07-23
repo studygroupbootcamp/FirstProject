@@ -1,6 +1,6 @@
 $(document).ready(function (event) {
     $.ajax({
-        url: "http://localhost:3001/commands/retrieve",
+        url: "/api/commands/retrieve",
         type: "GET",
         datatype:'json',
         success: console.log('nice'),
@@ -86,7 +86,7 @@ function delegate(i){$('.update' + i).on("click", function (e) {
     $.ajax({
         //This call uses a PUT method as it is updating.
         type: "PUT",
-        url: "http://localhost:3001/commands/update",
+        url: "/api/commands/update",
         data: update,
         success: console.log('success'),
         dataType: 'application/json'
@@ -107,7 +107,7 @@ function delegated(i){$('.delete'+i).on("click", function (e) {
     $.ajax({
         //This call uses DELETE as it is deleting
         type: "DELETE",
-        url: "http://localhost:3001/commands/delete",
+        url: "/api/commands/delete",
         data: deleteN,
         success: console.log('success'),
         dataType: 'application/json'

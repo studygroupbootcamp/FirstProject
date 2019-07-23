@@ -13,7 +13,7 @@ $(document).ready(function(){
         email: email
     }
     $.ajax({
-        url: "http://localhost:3001/commands/retrieveAccount",
+        url: "/api/commands/retrieveAccount",
         type: "POST",
         datatype:'json',
         success: console.log('nice'),

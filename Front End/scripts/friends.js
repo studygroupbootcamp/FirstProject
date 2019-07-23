@@ -5,7 +5,7 @@ $(document).ready(function(){
     }
 
     $.ajax({
-        url: "http://localhost:3001/relationships/showFriends",
+        url: "/api/relationships/showFriends",
         type: "POST",
         datatype:'json',
         success: console.log('nice'),
