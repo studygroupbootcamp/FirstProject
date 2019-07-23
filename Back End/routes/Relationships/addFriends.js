@@ -10,7 +10,8 @@ module.exports = (req, res) => {
         "SELECT * FROM relationships WHERE UIDFrom = " + newFriend.FROMId + " AND UIDTo = " + newFriend.TOId , function(err, rows, res) {
             console.log(rows)
             if(rows.length == 0) {addFriend()}
-         else{console.log('your already friends')}
+         else{console.log('your already friends')
+        }
         }
     )
     //Heres our actual sql query. Notice is uses the const we set up above. So it runs this command after whats in /DBConnection.

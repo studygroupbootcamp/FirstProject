@@ -34,6 +34,7 @@
                     //For now this just sends an alert. I would like to change this to a pop up box above the form eventaully.
                     alert('Fill out all fields please!')
                 } else {
+                localStorage.clear()
                 localStorage.setItem('name', newPerson.name)
                 localStorage.setItem('password', newPerson.password)
                 localStorage.setItem('email', newPerson.email)

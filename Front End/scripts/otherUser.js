@@ -4,6 +4,9 @@ var search = {
     name: localStorage.getItem('search')
 }
 
+
+
+
 console.log(localStorage)
 $.ajax({
   url: "http://localhost:3001/commands/nameSearch",
@@ -23,83 +26,24 @@ $.ajax({
     FROMId: localStorage.getItem('myid'),
     TOId: localStorage.getItem('OID')
 }
-var newMessage = {
-    fromId: localStorage.getItem('myid'),
-    toId: localStorage.getItem('OID'),
-    message: null
+var checkFriends = {
+  UIDFrom: localStorage.getItem('myid'),
+  UIDTo: localStorage.getItem('OID')
 }
-var messagefrom = {
-    UIDFROM: localStorage.getItem('OID'),
-    UIDTO: localStorage.getItem('myid'),
-}
-
-var messageto = {
-  UIDFROM: localStorage.getItem('myid'),
-  UIDTO: localStorage.getItem('OID')
-}
-var messages = []
-
 var postinfo = {
   posterid: localStorage.getItem('OID')
 }
 
-$('#sendMessage').on('click', function(event){
-  event.preventDefault()
-  newMessage.message = $('#message').val()
-  if (newMessage.message == ""){alert('please input a message')}
-  else {
-  $.ajax({
-    url: "http://localhost:3001/message/sendMessage",
-    type: "POST",
-    datatype: "json",
-    success: console.log('Message Sent: ' + newMessage),
-    data: newMessage
-  }) 
-  location.reload() }
-}) 
-
-
 $.ajax({
-  url: "http://localhost:3001/message/getFromMessage",
-  type: "POST",
-  datatype:'json',
-  success: console.log('Got Messages'),
-  data: messagefrom
-}) .then(function(response){
-  for (i=0;i<response.length;i++){
-    messages.push(response[i])
-  }
-
-}) 
-console.log(messageto)
-$.ajax({
-  url: "http://localhost:3001/message/getToMessage",
-  type: "POST",
-  datatype:'json',
-  success: console.log('Got Messages'),
-  data:messageto
-}) .then(function(response){
-  for (i=0;i<response.length;i++){
-  messages.push(response[i])}
-  messages.sort(function(a, b) { 
-   return a.MessageID - b.MessageID;
-  });
-  for (i=0;i<messages.length; i++) {
-    var tablerow = $('<tr>')
-
-    var message = $('<td>')
-    message.attr('scope', 'col')
-    if(messages[i].UIDFROM == localStorage.getItem('OID')) {
-    message.text(messages[i].COMMENT)
-    }
-    var message2 = $('<td>')
-    if(messages[i].UIDTO == localStorage.getItem('OID')) {
-    message2.text(messages[i].COMMENT)
-    }
-    $(tablerow).append(message)
-    $(tablerow).append(message2)
-    $('#messages').append(tablerow)
-  }
+  url:"http://localhost:3001/relationships/checkFriend",
+  type:"POST",
+  datatype:"json",
+  success: console.log('Checking if your friends'),
+  data: checkFriends
+}) .then(function(response){console.log(response)
+if (response.length > 0) {
+  $('#addfriendDiv').html('')
+}
 })
 
 $.ajax({
@@ -147,7 +91,11 @@ $.ajax({
       datatype:'json',
       success: console.log('Added'),
       data : relAdd
+    }) .then(function(response){
+      console.log(response)
+      
     })
+    location.reload()
 
   })
 })

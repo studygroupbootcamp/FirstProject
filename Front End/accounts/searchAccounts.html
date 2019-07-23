@@ -5,46 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="../css/otherUser.css">
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 
 <body>
-    <div class="d-flex flex-column h-auto justify-content-between">
+
+    <div class="d-flex flex-column h-100 justify-content-between">
         <div id='head'></div>
 
 
-        <div id="main" class='d-flex flex-column h-100 ml-5 mr-5 pl-5 pr-5'>
-            <div class="h-25 w-100 text-center bg-primary">
-                <h1 class="h-100">Picture goes here</h1>
-            </div>
-            <div class="w-100 text-center bg-light h-25">
-                <h1 id="OtherName"></h1>
-                <h3 id="OtherEmail"></h3>
-                <h3 id="OtherDate"></h3>
-                <div class="d-flex flex-row justify-content-around">
-                    <h3>Other Info Here</h3>
-                </div>
-            </div>
-            <div style="background-color: #bada55" class="w-100 text-center h-50">
-                <div id="addfriendDiv">
-                <button class="btn btn-dark mt-5 mb-5" id="addF">Add Friend</button>
-            </div>
-            <h1 class="text-dark mt-5 mb-5">Posts</h1>
-                <div id="posts"class="min-vh-100 d-flex flex-column justify-content-center">
-                    
-                </div>
+        <div id="main" class='d-flex bg-dark h-auto flex-column ml-5 mr-5 pl-5 pr-5'>
+            <div id="posts" class="d-flex flex-column bg-primary h-auto min-vh-100 align-items-center justify-content-between  text-center">
+                
             </div>
         </div>
+
+
     </div>
 
 
     <script src="../scripts/HeadFootAccounts.js"></script>
-    <script src="../scripts/otherUser.js"></script>
+    <script src="../scripts/searchAccounts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>

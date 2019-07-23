@@ -3,6 +3,7 @@ $(document).ready(function(){
     var friendSearch = {
         UIDFrom: localStorage.getItem('myid')
     }
+    console.log(friendSearch)
 
     var newpost = {
         postername: localStorage.getItem('name'),
@@ -36,6 +37,9 @@ $(document).ready(function(){
     
         }) .then(function(response){
             console.log(response)
+            response.sort(function(a, b) { 
+                return b.Postid - a.Postid;
+               });
             for(i=0;i<response.length;i++){
 
                 var outercard = $('<div>')

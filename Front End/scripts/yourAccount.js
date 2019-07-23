@@ -23,6 +23,7 @@ $(document).ready(function(){
       //back end. It comes in an array that is then looped through and each key value pair is stored in html tags and then displayed on the page.
                     //this is specifically the response
       .then(function(response){
+          localStorage.setItem('myid', response[0].id)
     if(admin == '32a64b') {
         var adpan = $('#adminPanel')
         var adbut = $('<button>')
@@ -31,7 +32,7 @@ $(document).ready(function(){
         adbut.text('Admin Panel')
         adpan.append(adbut)
     }
-    console.log(response[0].date_created)
+    console.log(response[0].id)
     $('#name').text(response[0].name)
     $('#email').text(response[0].email)
     $('#password').text(response[0].password)
@@ -46,5 +47,8 @@ $("#signOut").click(function(){
     localStorage.setItem('email', '')
     localStorage.setItem('password', '')
     localStorage.setItem('adminPass', "")
+    localStorage.setItem('myid', '')
+    localStorage.setItem('OID', '')
+    localStorage.setItem('search', '')
     window.location = '../index.html'
 })

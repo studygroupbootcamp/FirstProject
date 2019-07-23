@@ -10,7 +10,10 @@ module.exports=(req,res) => {
         for (i=0; i<rows.length;i++) {
             queryids.push(rows[i].UIDTo)
         }
+        if (queryids.length == 0) {console.log('oh no. no friends')}
+        else {
         query2(queryids)
+        }
       });
 
       function query2(queryids){ 

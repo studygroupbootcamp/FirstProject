@@ -12,10 +12,21 @@ module.exports=(req,res) => {
         //Here i had to do a weird thing since it wouldnt let me res.send inside of the query. So i had to store that outside in a function.
         //i then passed the data that was pulled to the function and used res.send there. What res.send does is actually send the data that
         //were getting from the database BACK to the original ajax call. The back end doesnt know we want data back unless we tell it!
-        log(rows)
+        console.log(rows)
+        if (rows.length == 0) {sqlquery2(info)}
+        else{
+        log(rows)}
+        
         // Log all results of the SELECT statement
       });
+      function sqlquery2(info){
+        sql.query("SELECT * FROM accounts WHERE name LIKE '%"+info.name+"%'", function(err,response,res) {
+          console.log(response)
+          log2(response)
+        })
+      }
       //Here is my function being passed the data as "rows". It then passes that to res.send so it can send the data back.
       function log(rows){res.send(rows)}
+      function log2(response){res.send(response)}
 
 }

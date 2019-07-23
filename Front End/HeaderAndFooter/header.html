@@ -10,26 +10,43 @@
         <div class="w-50"></div>
         <div class="w-50 d-flex justify-content-around">
             <button id="goaccount" class="btn btn-dark">Account</button>
-            <button id="gohome"class="btn btn-dark">Home</button>
-            <button class="btn btn-dark">Messages</button>
+            <button id="gohome" class="btn btn-dark">Home</button>
+            <button id="gomessages" class="btn btn-dark">Messages</button>
         </div>
     </div>
 </nav>
 
 <script>
     $(document).ready(function () {
-        function setsearch(){
-            var searched = $('#nameSearch').val()
-            localStorage.setItem('search', searched)
-        }
-        function changewindow(){
-            if (window.location.href.includes('/otherUser')) {
-                location.reload()
-            } else { window.location = './otherUser.html' }
+
+        function changewindow() {
+            search = {
+                name: localStorage.getItem('search')
+            }
+            $.ajax({
+                url: "http://localhost:3001/commands/nameSearch",
+                type: "POST",
+                datatype: 'json',
+                success: console.log('Got ' + localStorage.getItem('search') + "'s Info"),
+                data: search
+
+            }) .then(function(response){
+                if (response.length > 1) {
+                    console.log('heres some people')
+                    listuse()
+                } else if (response.length === 1) {
+                    console.log('This is a person')
+                    otheruse()
+                } else {
+                    console.log('nobody with that name exists')
+                    
+                }
+            })
+
         }
 
         $('#search').on('click', function () {
-            setsearch(changewindow())
+            setsearch()
         })
 
         $('#goaccount').on('click', function () {
@@ -39,6 +56,28 @@
         $('#gohome').on('click', function () {
             window.location = './Home.html'
         })
+
+        $('#gomessages').on('click', function () {
+            window.location = './messages.html'
+        })
+
+        function otheruse(){
+            console.log('hello')
+            if (window.location.href.includes('/otherUser')) {
+                location.reload()
+            } else { window.location = './otherUser.html' }
+        }
+
+        function listuse(){
+            if (window.location.href.includes('/searchAccounts.html')) {
+                location.reload()
+            } else { window.location = './searchAccounts.html' }
+        }
+        function setsearch() {
+            var searched = $('#nameSearch').val()
+            localStorage.setItem('search', searched)
+            changewindow()
+        }
     })
 
 
