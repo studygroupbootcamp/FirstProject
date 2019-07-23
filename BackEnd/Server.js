@@ -4,6 +4,8 @@ var app = express()
 var cors = require('cors')
 //this is our routes folder. It contains further routes for commands.
 var routes = require('./routes')
+const views = require('./HTMLServer')
+const path = require('path')
 
 
 app.use(express.urlencoded({ extended: true }));
@@ -11,13 +13,17 @@ app.use(express.json());
 //we use cors to get around the whole CORS issues thing weve been dealing with. This just allows us to make calls from the front end since its our
 //own website we dont have to worry.
 app.use(cors());
+console.log(path.join(__dirname+'/../Front End'))
+app.use(express.static(path.join(__dirname+'/../Front End')))
 
 var PORT = process.env.PORT || 3001;
 
 
 
 //This is the start of our routes. It basically says / is the first part of any routes in the ./routes folder
-app.use('/', routes)
+app.use('/api', routes)
+app.use('/', views)
+
 
 
 app.listen(PORT, function(){
