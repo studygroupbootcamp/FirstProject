@@ -8,7 +8,7 @@ module.exports = (req, res) => {
     var newpost = req.body
     sql.query(
         //our actual SQL code inserting a new row.
-        "INSERT INTO posts SET ?",
+        "INSERT INTO Posts SET ?",
         //What our row is going to look like. Notice newPerson.name/email/password. the data being sent came in the form of an object. it had the
         //keys of name email and password. So we can specifically target those.
         {

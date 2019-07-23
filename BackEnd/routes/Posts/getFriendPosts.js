@@ -23,7 +23,7 @@ module.exports=(req,res) => {
       });
 
       function query2(queryids){ 
-         sql.query("SELECT * FROM posts WHERE posterid IN ("+queryids+")", function(err, dat, res){
+         sql.query("SELECT * FROM Posts WHERE posterid IN ("+queryids+")", function(err, dat, res){
               if (err) throw err;
               sendr(dat)
             });  
